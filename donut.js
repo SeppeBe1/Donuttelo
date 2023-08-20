@@ -15,7 +15,6 @@ const renderer = new THREE.WebGLRenderer();
 document.querySelector(".donut3d")
 renderer.setSize(document.querySelector(".donut3d").clientWidth, document.querySelector(".donut3d").clientHeight);
 document.querySelector(".donut3d").appendChild(renderer.domElement);
-// document.body.appendChild(renderer.domElement);
 
 // add light
 const light = new THREE.DirectionalLight(0xffffff, 1);
@@ -28,6 +27,30 @@ loader.load("donut.glb", function (gltf) {
 	// scale
 	donut = gltf;
 	donut.scene.scale.set(10, 10, 10);
+
+	donut.scene.traverse(function (child) {
+        if (child.isMesh && child.name === "topping") {
+            // Change the color of the topping material
+            child.material.color.set("#FFFFFF"); // Set to red color, change as needed
+        }
+    });
+
+	donut.scene.traverse(function (child) {
+        if (child.isMesh && child.name === "glaze") {
+            // Change the color of the topping material
+            child.material.color.set("#E4E5C0"); // Set to red color, change as needed
+        }
+    });
+
+	donut.scene.traverse(function (child) {
+        if (child.isMesh && child.name === "donut") {
+            // Change the color of the topping material
+            child.material.color.set("#E9967A"); // Set to red color, change as needed
+        }
+    });
+
+
+
 	scene.add(donut.scene);
 });
 
