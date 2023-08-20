@@ -1,7 +1,8 @@
 body{
     margin: 0;
     max-height: 100vh;
-    overflow: auto;
+    overflow: hidden;
+    font-family: sans-serif;
 }
 
 header{
@@ -16,19 +17,25 @@ header{
 
 
 
+
 /* ----------form---------- */
 
 .donutform{
     padding-left: 50px;
     padding-right: 20px;
+    padding-bottom: 50px;
     background-color: red;
 }
 
 label{
-
+font-size: 18px;
 }
 
 input{
+    margin-top: 10px;
+    padding: 5px;
+    border-style: none;
+    border-radius: 5px;
 
 }
 
@@ -37,7 +44,7 @@ input{
 
 
 .donut3d{
-    height: 90vh;
+    height: 100vh;
     width: 100%;
 
 }
