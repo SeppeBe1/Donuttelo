@@ -7,63 +7,67 @@
 	<link rel="stylesheet" href="css.css">
 </head>
 <body>
-	<h1>Create a New Donut</h1>
-    <form action="/api/v1/donuts" method="POST" class="donutform">
-        <label for="donutname">Donut Name:</label>
-        <input type="text" id="donutname" name="donutname" required><br><br>
-        
-        <label for="topping">Topping:</label>
-        <select id="topping" name="topping" required>
-            <option value="strawberry">Strawberry</option>
-            <option value="twix">twix</option>
-            <option value="oreo">oreo</option>
-        </select><br><br>
-        
-        <label for="glaze">Glaze:</label>
-        <select id="glaze" name="glaze" required>
-            <option value="strawberry">Strawberry</option>
-            <option value="vanilla">Vanilla</option>
-            <option value="chocolate">Chocolate</option>
-        </select><br><br>
-        
-        <label for="dough">Dough:</label>
-        <select id="dough" name="dough" required>
-            <option value="vanilla">vanilla</option>
-            <option value="chocolate">chocolate</option>
-        </select><br><br>
+	<header>
+		<h1>Create a New Donut</h1>
+	</header>
+	<div class="donutcreator">
+		<form action="/api/v1/donuts" method="POST" class="donutform">
+			<label for="donutname">Donut Name:</label>
+			<input type="text" id="donutname" name="donutname" required><br><br>
+			
+			<label for="topping">Topping:</label>
+			<select id="topping" name="topping" required>
+				<option value="strawberry">Strawberry</option>
+				<option value="twix">twix</option>
+				<option value="oreo">oreo</option>
+			</select><br><br>
+			
+			<label for="glaze">Glaze:</label>
+			<select id="glaze" name="glaze" required>
+				<option value="strawberry">Strawberry</option>
+				<option value="vanilla">Vanilla</option>
+				<option value="chocolate">Chocolate</option>
+			</select><br><br>
+			
+			<label for="dough">Dough:</label>
+			<select id="dough" name="dough" required>
+				<option value="vanilla">vanilla</option>
+				<option value="chocolate">chocolate</option>
+			</select><br><br>
 
-		<h2>Order information</h2>
-        
-        <label for="companyname">Company Name:</label>
-        <input type="text" id="companyname" name="companyname" required><br><br>
-        
-        <label for="streetname">Street Name:</label>
-        <input type="text" id="streetname" name="streetname" required><br><br>
-        
-        <label for="housenumber">House Number:</label>
-        <input type="text" id="housenumber" name="housenumber" required><br><br>
-        
-        <label for="city">City:</label>
-        <input type="text" id="city" name="city" required><br><br>
-        
-        <label for="postalcode">Postal Code:</label>
-        <input type="text" id="postalcode" name="postalcode" required><br><br>
-        
-        <label for="orderAmount">Order Amount:</label>
-        <input type="number" id="orderAmount" name="orderAmount" required><br><br>
-        
-        <label for="orderStatus">Order Status:</label>
-        <select id="orderStatus" name="orderStatus" required>
-            <option value="Pending">Pending</option>
-            <option value="Completed">Completed</option>
-            <option value="Canceled">Canceled</option>
-        </select><br><br>
-        
-        <button type="submit">Create Donut</button>
-    </form>
+			<h2>Order information</h2>
+			
+			<label for="companyname">Company Name:</label>
+			<input type="text" id="companyname" name="companyname" required><br><br>
+			
+			<label for="streetname">Street Name:</label>
+			<input type="text" id="streetname" name="streetname" required><br><br>
+			
+			<label for="housenumber">House Number:</label>
+			<input type="text" id="housenumber" name="housenumber" required><br><br>
+			
+			<label for="city">City:</label>
+			<input type="text" id="city" name="city" required><br><br>
+			
+			<label for="postalcode">Postal Code:</label>
+			<input type="text" id="postalcode" name="postalcode" required><br><br>
+			
+			<label for="orderAmount">Order Amount:</label>
+			<input type="number" id="orderAmount" name="orderAmount" required><br><br>
+			
+			<label for="orderStatus">Order Status:</label>
+			<select id="orderStatus" name="orderStatus" required>
+				<option value="Pending">Pending</option>
+				<option value="Completed">Completed</option>
+				<option value="Canceled">Canceled</option>
+			</select><br><br>
+			
+			<button type="submit">Create Donut</button>
+		</form>
 
-	<div class="donut3d">
+		<div class="donut3d">
 
+		</div>
 	</div>
 
 	<script type="module" src="/main.js"></script>
