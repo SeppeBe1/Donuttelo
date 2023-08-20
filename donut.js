@@ -31,31 +31,103 @@ scene.add(light1,light2);
 
 // donut load and config
 const loader = new GLTFLoader();
+
 loader.load("donut.glb", function (gltf) {
+    donut = gltf;
+    donut.scene.scale.set(10, 10, 10);
 
-	donut = gltf;
-	donut.scene.scale.set(10, 10, 10);
-	// camera.lookAt(0, 0, 0); // Look at the center of the scene
-
-
-	// Coloring the parts of the donut
 	donut.scene.traverse(function (child) {
         if (child.isMesh && child.name === "topping") {
-            child.material.color.set("#FFFFFF"); 
+            child.material.color.set("#fffff"); 
         }
         else if (child.isMesh && child.name === "glaze") {
-            child.material.color.set("#E4E5C0"); 
+            child.material.color.set("#fc5a8d"); 
         }
         else if (child.isMesh && child.name === "donut") {
-            child.material.color.set("#E9967A");
+            child.material.color.set("#DCD8D4");
         }
     });
 
-	scene.add(donut.scene);
+    // ...
 
+    const toppingChoice = document.getElementById('topping');
+    const glazeChoice = document.getElementById('glaze');
+    const doughChoice = document.getElementById('dough');
 
+    toppingChoice.addEventListener('change', function() {
+		console.log(toppingChoice.value)
+        let selectedTopping = toppingChoice.value; // Rename the variable
+        // ...
+
+        donut.scene.traverse(function (child) {
+            switch(selectedTopping) {
+                case 'strawberry':
+					if (child.isMesh && child.name === "topping") {
+						child.material.color.set("#fc5a8d"); 
+					}
+                    break;
+                case 'twix':
+					if (child.isMesh && child.name === "topping") {
+						child.material.color.set("#84563c"); 
+					}
+                    break;
+                case 'oreo':
+					if (child.isMesh && child.name === "topping") {
+						child.material.color.set("#361113"); 
+					}
+                    break;
+            }
+        });
+    });
+
+    glazeChoice.addEventListener('change', function() {
+        let selectedGlaze = glazeChoice.value; // Rename the variable
+        // ...
+
+        donut.scene.traverse(function (child) {
+            switch(selectedGlaze) {
+				case 'strawberry':
+					if (child.isMesh && child.name === "glaze") {
+						child.material.color.set("#fc5a8d"); 
+					}
+                    break;
+                case 'vanilla':
+					if (child.isMesh && child.name === "glaze") {
+						child.material.color.set("#cfbfa1"); 
+					}
+                    break;
+                case 'chocolate':
+					if (child.isMesh && child.name === "glaze") {
+						child.material.color.set("#84563c"); 
+					}
+                    break;
+            }
+        });
+    });
+
+    doughChoice.addEventListener('change', function() {
+        let selectedDough = doughChoice.value; 
+		console.log(selectedDough)
+
+        donut.scene.traverse(function (child) {
+            switch(selectedDough) {
+				case 'vanilla':
+					if (child.isMesh && child.name === "donut") {
+						child.material.color.set("#DCD8D4"); 
+					}
+                    break;
+                case 'chocolate':
+					if (child.isMesh && child.name === "donut") {
+						child.material.color.set("#84563c"); 
+					}
+                    break;
+
+            }
+        });
+    });
+
+    scene.add(donut.scene);
 });
-
 
 function animate() {
 	requestAnimationFrame(animate);
