@@ -21,7 +21,7 @@ header{
 .donutform{
     padding-left: 50px;
     padding-right: 20px;
-    background-color: blue;
+    background-color: red;
 }
 
 label{
@@ -37,7 +37,7 @@ input{
 
 
 .donut3d{
-    height: 91vh;
+    height: 90vh;
     width: 100%;
 
 }
