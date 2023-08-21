@@ -1,20 +1,22 @@
 <!-- import components -->
 
 <template id="login">
-  <h1>{{ title }}</h1>
+  <div class="loginblock">
+    <h1>{{ title }}</h1>
 
-  <label for="username">Username:</label><br />
-  <input type="text" id="username" v-model="username" required /><br /><br />
+    <label for="username">Username:</label><br />
+    <input type="text" id="username" v-model="username" required /><br /><br />
 
-  <label for="password">Password:</label><br />
-  <input
-    type="password"
-    id="password"
-    v-model="password"
-    required
-  /><br /><br />
+    <label for="password">Password:</label><br />
+    <input
+      type="password"
+      id="password"
+      v-model="password"
+      required
+    /><br /><br />
 
-  <button @click="login">Login</button>
+    <button class="submit" @click="login">Login</button>
+  </div>
 </template>
 
 <script>
@@ -57,31 +59,56 @@ export default {
 };
 </script>
 
-<!-- <style scoped>
-header {
-  line-height: 1.5;
+<style scoped>
+:root {
+  --donutelloBlauw: #83d1e5;
+  --donutelloGeel: #ffeb52;
+  --donutelloRoze: #fb327f;
 }
 
-.logo {
+h1 {
+  color: #fb327f;
+  font-family: sans-serif;
+}
+
+.loginblock {
+  background-color: #ffeb52;
+  text-align: center;
+  width: 200px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 20px 20px 20px;
+  margin-top: 20px;
+}
+
+label {
+  color: var(--donutelloBlauw);
+  font-family: sans-serif;
+}
+
+input {
+  margin-top: 10px;
+  padding: 5px;
+  width: 80%;
+  border-style: none;
+  border-radius: 5px;
+  border: 3px solid #83d1e5;
+  font-family: sans-serif;
+}
+
+.submit {
+  background-color: #fb327f;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 20px 5px 20px;
+  font-size: 20px;
+  margin-bottom: 10px;
+
+  align-self: center;
+
+  margin: 0 auto;
   display: block;
-  margin: 0 auto 2rem;
 }
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style> -->
+</style>
