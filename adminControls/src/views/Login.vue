@@ -29,8 +29,6 @@ export default {
 
   methods: {
     login() {
-      console.log(this.username);
-      console.log(this.password);
       fetch("http://localhost:3000/api/v1/users/login", {
         method: "POST",
         headers: {
@@ -48,7 +46,6 @@ export default {
           if (data.status == "failed") {
             console.log("ni gelukt");
           } else if (data.status == "succes") {
-            console.log("gelukt");
             this.$emit("authenticated");
           }
         })

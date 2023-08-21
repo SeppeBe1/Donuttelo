@@ -6,6 +6,14 @@
       <h2>Donut Name: {{ donut.donutname }}</h2>
       <p>Company: {{ donut.companyname }}</p>
       <p>City: {{ donut.city }}</p>
+
+      <a
+        v-on:click.prevent="deleteDonut"
+        class="btndelete"
+        href="#"
+        :data-id="donut._id"
+        >delete</a
+      >
     </div>
   </div>
 </template>
@@ -38,13 +46,29 @@ export default {
           if (data.status == "failed") {
             console.log("geen donuts");
           } else if (data.status == "succes") {
-            console.log("gelukt");
             this.donuts = data.data;
           }
         })
         .catch((error) => {
           console.error("Error:", error);
         });
+    },
+
+    deleteDonut(e) {
+      let currentDonut = e.target.parentElement.parentElement;
+      e.target.parentElement.parentElement.classList.add("removed");
+      var donutId = e.target.getAttribute("data-id");
+      let token = window.localStorage.getItem("token");
+
+      fetch(`http://localhost:3000/api/v1/donuts/${donutId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      }).then((response) => {
+        return response.json();
+      });
     },
   },
 };
