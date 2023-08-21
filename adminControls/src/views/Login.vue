@@ -46,7 +46,8 @@ export default {
         })
         .then((data) => {
           if (data.status == "failed") {
-            console.log("ni gelukt");
+            document.querySelector("#username").classList.add("invalid");
+            document.querySelector("#password").classList.add("invalid");
           } else if (data.status == "succes") {
             this.$emit("authenticated");
           }
@@ -110,5 +111,9 @@ input {
 
   margin: 0 auto;
   display: block;
+}
+
+.invalid {
+  border-color: red;
 }
 </style>
