@@ -1,14 +1,33 @@
 <!-- import components -->
 
-<template>
-  <h1>Login here</h1>
+<template id="login">
+  <h1>{{ title }}</h1>
 
   <label for="username">username:</label><br />
   <input type="text" id="username" name="username" required /><br /><br />
 
   <label for="password">password:</label><br />
   <input type="text" id="password" name="password" required /><br /><br />
+
+  <button @click="login">Login</button>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      title: "Login here",
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    login() {
+      console.log("Logging in...");
+    },
+  },
+};
+</script>
 
 <!-- <style scoped>
 header {
