@@ -14,7 +14,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 camera.position.z = 5;
-camera.position.set(2, 1,2); // Place the camera above the sce
+camera.position.set(0, 1.7,3); // Place the camera above the sce
 camera.lookAt(0, 0, 0); // Look at the center of the scene
 
 const renderer = new THREE.WebGLRenderer();
@@ -28,6 +28,12 @@ light1.position.set(1, 0, 0);
 const light2 = new THREE.DirectionalLight(0xffffff, 1);
 light2.position.set(0, 0, 1);
 scene.add(light1,light2);
+
+//background
+const backgroundColor = new THREE.Color('#83d1e5'); // Change this color to your desired background color
+scene.background = backgroundColor;
+
+//-----------------------------------------------------------
 
 // donut load and config
 const loader = new GLTFLoader();
@@ -48,7 +54,6 @@ loader.load("donut.glb", function (gltf) {
         }
     });
 
-    // ...
 
     const toppingChoice = document.getElementById('topping');
     const glazeChoice = document.getElementById('glaze');
@@ -56,8 +61,7 @@ loader.load("donut.glb", function (gltf) {
 
     toppingChoice.addEventListener('change', function() {
 		console.log(toppingChoice.value)
-        let selectedTopping = toppingChoice.value; // Rename the variable
-        // ...
+        let selectedTopping = toppingChoice.value; 
 
         donut.scene.traverse(function (child) {
             switch(selectedTopping) {

@@ -1,12 +1,22 @@
+:root {
+    --donutelloBlauw: #83d1e5;
+    --donutelloGeel: #ffeb52;
+    --donutelloRoze: #fb327f;
+  }
+
 body{
     margin: 0;
     max-height: 100vh;
     overflow: hidden;
     font-family: sans-serif;
+    background-color: var(--donutelloRoze);
 }
 
 header{
     text-align: center;
+    color: white;
+    background-color: var(--donutelloRoze);
+
 }
 
 .donutcreator{
@@ -16,28 +26,54 @@ header{
 }
 
 
-
-
 /* ----------form---------- */
 
 .donutform{
     padding-left: 50px;
-    padding-right: 20px;
+    padding-right: 60px;
     padding-bottom: 50px;
-    background-color: red;
+    background-color: var(--donutelloGeel);
+}
+
+h2{
+    color:var(--donutelloRoze);
+    text-align: center;
 }
 
 label{
-font-size: 18px;
+    font-size: 18px;
+    color: var(--donutelloRoze);
 }
 
 input{
-    margin-top: 10px;
     padding: 5px;
+    width: 100%;
     border-style: none;
     border-radius: 5px;
+    border: 3px solid var(--donutelloBlauw) ;
 
 }
+
+select{
+    width: 100%;
+    margin-top: -55px;
+}
+
+
+.submit{
+    background-color: var(--donutelloRoze);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px 5px 10px;
+    font-size: 20px;
+
+    align-self: center;
+
+    margin: 0 auto;
+    display: block;
+}
+
 
 
 /* ----------donutmaker---------- */
