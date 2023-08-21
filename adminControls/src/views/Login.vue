@@ -49,7 +49,7 @@ export default {
             console.log("ni gelukt");
           } else if (data.status == "succes") {
             console.log("gelukt");
-            this.$router.push({ name: "library" });
+            this.$emit("authenticated");
           }
         })
         .catch((error) => {
