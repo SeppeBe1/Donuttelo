@@ -1,3 +1,85 @@
+document.querySelector(".submit").addEventListener("click", (e) => {
+  e.preventDefault(); // Prevent the default form submission
+  validateForm();
+});
+
+function validateForm() {
+  const donutName = document.querySelector("#donutname");
+  const companyName = document.querySelector("#companyname");
+  const streetname = document.querySelector("#streetname");
+  const housenumber = document.querySelector("#housenumber");
+  const city = document.querySelector("#city");
+  const postalcode = document.querySelector("#postalcode");
+  const orderAmount = document.querySelector("#orderAmount");
+
+  if (!donutName.value || !companyName.value || !streetname.value || !housenumber.value || !city.value || !postalcode.value || isNaN(orderAmount.value)) {
+    if (!donutName.value) {
+      donutName.classList.add("invalid");
+      isValid = false;
+  } else {
+      donutName.classList.remove("invalid");
+  }
+
+  if (!companyName.value) {
+    companyName.classList.add("invalid");
+      isValid = false;
+  } else {
+    companyName.classList.remove("invalid");
+  }
+
+  if (!streetname.value) {
+    streetname.classList.add("invalid");
+      isValid = false;
+  } else {
+    streetname.classList.remove("invalid");
+  }
+
+  if (!housenumber.value) {
+    housenumber.classList.add("invalid");
+      isValid = false;
+  } else {
+    housenumber.classList.remove("invalid");
+  }
+
+  if (!city.value) {
+    city.classList.add("invalid");
+      isValid = false;
+  } else {
+    city.classList.remove("invalid");
+  }
+
+  if (!postalcode.value) {
+    postalcode.classList.add("invalid");
+      isValid = false;
+  } else {
+    postalcode.classList.remove("invalid");
+  }
+
+  if (isNaN(orderAmount.value)) {
+    orderAmount.classList.add("invalid");
+      isValid = false;
+  } else {
+    orderAmount.classList.remove("invalid");
+  }
+
+  // Add more validation checks as needed
+
+  if (!isValid) {
+      alert("Please fill in all required fields with valid values.");
+  }
+      alert("Please fill in all required fields with valid values.");
+      return false;
+  } else {
+    createDonut();
+  }
+
+  // Add more validation checks as needed
+
+  return true;
+}
+
+
+
 const createDonut = () => {
 
     fetch("http://localhost:3000/api/v1/donuts", {
@@ -38,8 +120,3 @@ const createDonut = () => {
         console.error(error);
       });
   };
-
-  document.querySelector(".submit").addEventListener("click", (e) => {
-    e.preventDefault(); // Prevent the default form submission
-    createDonut();
-  });
