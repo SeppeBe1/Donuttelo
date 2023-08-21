@@ -32,7 +32,6 @@ const createDonut = () => {
           } else {
             setIsChanged(false);
           }
-          handleCloseModal();
         }
       })
       .catch((error) => {
