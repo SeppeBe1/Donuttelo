@@ -9,13 +9,36 @@ export default {
   data() {
     return {
       title: "we zijn er",
-      username: "",
-      password: "",
     };
   },
 
+  mounted() {
+    this.getDonuts();
+  },
+
   methods: {
-    // login() {},
+    getDonuts() {
+      fetch("http://localhost:3000/api/v1/donuts", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          if (data.status == "failed") {
+            console.log("geen donuts");
+          } else if (data.status == "succes") {
+            console.log("gelukt");
+            console.log(data.data);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    },
   },
 };
 </script>
