@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; 
 
 // GLTFLoader
 let donut = null;
@@ -17,9 +18,13 @@ camera.position.z = 5;
 camera.position.set(0, 1.7,3); // Place the camera above the sce
 camera.lookAt(0, 0, 0); // Look at the center of the scene
 
+
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(document.querySelector(".donut3d").clientWidth, document.querySelector(".donut3d").clientHeight);
 document.querySelector(".donut3d").appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.autoRotate = false; // Disable auto-rotation
 
 // add light
 const light1 = new THREE.DirectionalLight(0xffffff, 1);
@@ -44,7 +49,7 @@ loader.load("donut.glb", function (gltf) {
 
 	donut.scene.traverse(function (child) {
         if (child.isMesh && child.name === "topping") {
-            child.material.color.set("#fffff"); 
+            child.material.color.set("#fc5a8d"); 
         }
         else if (child.isMesh && child.name === "glaze") {
             child.material.color.set("#fc5a8d"); 
@@ -70,12 +75,12 @@ loader.load("donut.glb", function (gltf) {
 						child.material.color.set("#fc5a8d"); 
 					}
                     break;
-                case 'twix':
+                case 'chocolate':
 					if (child.isMesh && child.name === "topping") {
 						child.material.color.set("#84563c"); 
 					}
                     break;
-                case 'oreo':
+                case 'pure chocolate':
 					if (child.isMesh && child.name === "topping") {
 						child.material.color.set("#361113"); 
 					}
@@ -136,6 +141,7 @@ loader.load("donut.glb", function (gltf) {
 function animate() {
 	requestAnimationFrame(animate);
 
+    controls.update();
 	// Rotate the donut
 	if (donut) {
 		donut.scene.rotation.y += 0.005; 
