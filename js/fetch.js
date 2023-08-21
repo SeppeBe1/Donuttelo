@@ -12,69 +12,31 @@ function validateForm() {
   const postalcode = document.querySelector("#postalcode");
   const orderAmount = document.querySelector("#orderAmount");
 
-  if (!donutName.value || !companyName.value || !streetname.value || !housenumber.value || !city.value || !postalcode.value || isNaN(orderAmount.value)) {
-    if (!donutName.value) {
-      donutName.classList.add("invalid");
-      isValid = false;
-  } else {
-      donutName.classList.remove("invalid");
-  }
+  let isValid = true; // Initialize the isValid flag
 
-  if (!companyName.value) {
-    companyName.classList.add("invalid");
-      isValid = false;
-  } else {
-    companyName.classList.remove("invalid");
-  }
+  // Reset the borders for all fields
+  const inputFields = [donutName, companyName, streetname, housenumber, city, postalcode, orderAmount];
+  inputFields.forEach(input => {
+      input.classList.remove("invalid");
+  });
 
-  if (!streetname.value) {
-    streetname.classList.add("invalid");
-      isValid = false;
-  } else {
-    streetname.classList.remove("invalid");
-  }
-
-  if (!housenumber.value) {
-    housenumber.classList.add("invalid");
-      isValid = false;
-  } else {
-    housenumber.classList.remove("invalid");
-  }
-
-  if (!city.value) {
-    city.classList.add("invalid");
-      isValid = false;
-  } else {
-    city.classList.remove("invalid");
-  }
-
-  if (!postalcode.value) {
-    postalcode.classList.add("invalid");
-      isValid = false;
-  } else {
-    postalcode.classList.remove("invalid");
-  }
-
-  if (isNaN(orderAmount.value)) {
-    orderAmount.classList.add("invalid");
-      isValid = false;
-  } else {
-    orderAmount.classList.remove("invalid");
-  }
-
-  
+  // Check each field for missing or invalid values
+  inputFields.forEach(input => {
+      if (!input.value) {
+          input.classList.add("invalid");
+          isValid = false;
+      }
+      if (input === orderAmount && isNaN(input.value)) {
+          input.classList.add("invalid");
+          isValid = false;
+      }
+  });
 
   if (!isValid) {
       alert("Please fill in all required fields with valid values.");
   }
-      alert("Please fill in all required fields with valid values.");
-      return false;
-  } else {
-    createDonut();
-  }
 
-
-  return true;
+  return isValid;
 }
 
 

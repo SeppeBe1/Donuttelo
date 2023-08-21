@@ -51,7 +51,10 @@ input{
     border-style: none;
     border-radius: 5px;
     border: 3px solid var(--donutelloBlauw) ;
+}
 
+.invalid {
+    border-color: red;
 }
 
 select{
