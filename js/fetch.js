@@ -1,5 +1,5 @@
 document.querySelector(".submit").addEventListener("click", (e) => {
-  e.preventDefault(); // Prevent the default form submission
+  e.preventDefault();
   validateForm();
 });
 
@@ -62,7 +62,7 @@ function validateForm() {
     orderAmount.classList.remove("invalid");
   }
 
-  // Add more validation checks as needed
+  
 
   if (!isValid) {
       alert("Please fill in all required fields with valid values.");
@@ -73,7 +73,6 @@ function validateForm() {
     createDonut();
   }
 
-  // Add more validation checks as needed
 
   return true;
 }
