@@ -45,11 +45,11 @@ export default {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
           if (data.status == "failed") {
             console.log("ni gelukt");
           } else if (data.status == "succes") {
             console.log("gelukt");
+            this.$router.push({ name: "library" });
           }
         })
         .catch((error) => {
