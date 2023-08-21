@@ -25,15 +25,18 @@ function validateForm() {
       if (!input.value) {
           input.classList.add("invalid");
           isValid = false;
-      }
+      } else 
       if (input === orderAmount && isNaN(input.value)) {
           input.classList.add("invalid");
           isValid = false;
-      }
+      } 
   });
+
 
   if (!isValid) {
       alert("Please fill in all required fields with valid values.");
+  } else {
+    createDonut();
   }
 
   return isValid;
@@ -68,13 +71,12 @@ const createDonut = () => {
       .then((data) => {
         console.log(data);
         if (data.status == "failed") {
+          console.log(data);
+
         } else if (data.status == "succes") {
-          setInputValue("");
-          if (isChanged == false) {
-            setIsChanged(true);
-          } else {
-            setIsChanged(false);
-          }
+          console.log("created")
+          window.location.href = "../thanks.html";
+
         }
       })
       .catch((error) => {
