@@ -3,11 +3,16 @@
 <template id="login">
   <h1>{{ title }}</h1>
 
-  <label for="username">username:</label><br />
-  <input type="text" id="username" name="username" required /><br /><br />
+  <label for="username">Username:</label><br />
+  <input type="text" id="username" v-model="username" required /><br /><br />
 
-  <label for="password">password:</label><br />
-  <input type="text" id="password" name="password" required /><br /><br />
+  <label for="password">Password:</label><br />
+  <input
+    type="password"
+    id="password"
+    v-model="password"
+    required
+  /><br /><br />
 
   <button @click="login">Login</button>
 </template>
@@ -21,9 +26,35 @@ export default {
       password: "",
     };
   },
+
   methods: {
     login() {
-      console.log("Logging in...");
+      console.log(this.username);
+      console.log(this.password);
+      fetch("http://localhost:3000/api/v1/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: this.username,
+          password: this.password,
+        }),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          if (data.status == "failed") {
+            console.log("ni gelukt");
+          } else if (data.status == "succes") {
+            console.log("gelukt");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     },
   },
 };
