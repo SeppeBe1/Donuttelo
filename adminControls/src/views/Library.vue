@@ -8,7 +8,7 @@
       <p>City: {{ donut.city }}</p>
 
       <a
-        v-on:click.prevent="deleteDonut"
+        v-on:click.prevent="deleteDonut(index)"
         class="btndelete"
         href="#"
         :data-id="donut._id"
@@ -54,10 +54,8 @@ export default {
         });
     },
 
-    deleteDonut(e) {
-      let currentDonut = e.target.parentElement.parentElement;
-      e.target.parentElement.parentElement.classList.add("removed");
-      var donutId = e.target.getAttribute("data-id");
+    deleteDonut(index) {
+      let donutId = this.donuts[index]._id;
       let token = window.localStorage.getItem("token");
 
       fetch(`http://localhost:3000/api/v1/donuts/${donutId}`, {
@@ -66,18 +64,34 @@ export default {
           "Content-Type": "application/json",
           Authorization: "Bearer " + token,
         },
-      }).then((response) => {
-        return response.json();
-      });
+      })
+        .then((response) => {
+          if (response.ok) {
+            this.donut.parentElement.classList.add("removed");
+            this.donuts.splice(index, 1); // Remove the donut from the array
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     },
   },
 };
 </script>
 
 <style scoped>
+#app {
+  overflow-x: hidden;
+}
+
 .donut-item {
   margin: 20px;
   padding: 10px;
   border: 1px solid #ccc;
+}
+
+.removed {
+  translate: 2000px;
+  transition: translate 1.5s ease-in;
 }
 </style>
