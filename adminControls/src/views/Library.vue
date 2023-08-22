@@ -1,48 +1,46 @@
 <template>
-  <div>
+  <div class="template">
     <h1>{{ title }}</h1>
 
     <div
       v-for="(donut, index) in donuts"
       :key="index"
       class="donut-item"
-      :class="{ removed: donut.removed }"
+      :class="{
+        removed: donut.removed,
+        'order-false': !donut.orderStatus,
+        'order-true': donut.orderStatus,
+      }"
     >
-      <div>
-        <h2>Donut: {{ donut.donutname }}</h2>
-        <p>topping: {{ donut.topping }}</p>
-        <p>glaze: {{ donut.glaze }}</p>
-        <p>dough: {{ donut.dough }}</p>
-      </div>
+      <h2>Donut: {{ donut.donutname }}</h2>
+      <p>Topping: {{ donut.topping }}</p>
+      <p>Glaze: {{ donut.glaze }}</p>
+      <p>Dough: {{ donut.dough }}</p>
 
-      <div>
-        <h2>Company: {{ donut.Company }}</h2>
-        <p>streetname: {{ donut.streetname }}</p>
-        <p>housenumber: {{ donut.housenumber }}</p>
-        <p>city: {{ donut.city }}</p>
-        <p>postalcode: {{ donut.postalcode }}</p>
-      </div>
+      <p>Companyname: {{ donut.companyname }}</p>
+      <p>Streetname: {{ donut.streetname }}</p>
+      <p>Housenumber: {{ donut.housenumber }}</p>
+      <p>City: {{ donut.city }}</p>
+      <p>Postalcode: {{ donut.postalcode }}</p>
 
-      <div>
-        <h2>Extra info:</h2>
-        <p>orderAmount: {{ donut.orderAmount }}</p>
-        <p>orderStatus: {{ donut.orderStatus }}</p>
-        <a
-          v-on:click.prevent="changestatus(index, donut)"
-          class="btnstatus"
-          href="#"
-          :data-id="donut._id"
-          >verander orderstatus</a
-        >
-        <br />
-        <a
-          v-on:click.prevent="deleteDonut(index, donut)"
-          class="btndelete"
-          href="#"
-          :data-id="donut._id"
-          >delete</a
-        >
-      </div>
+      <p>Extra info:</p>
+      <p>OrderAmount: {{ donut.orderAmount }}</p>
+      <p>OrderStatus: {{ donut.orderStatus }}</p>
+      <a
+        v-on:click.prevent="changestatus(index, donut)"
+        class="btnstatus"
+        href="#"
+        :data-id="donut._id"
+        ><img src="../../assets/images/order.png" alt="order image"
+      /></a>
+      <br />
+      <a
+        v-on:click.prevent="deleteDonut(index, donut)"
+        class="btndelete"
+        href="#"
+        :data-id="donut._id"
+        ><img src="../../assets/images/DELETE.png" alt="delete image"
+      /></a>
     </div>
   </div>
 </template>
@@ -131,6 +129,9 @@ export default {
             console.error("Error:", json.message);
           } else if (json.status == "succes") {
             donut.orderStatus = newOrderStatus;
+            if (newOrderStatus) {
+            } else if (!newOrderStatus) {
+            }
           }
         })
         .catch((error) => {
@@ -144,14 +145,35 @@ export default {
 <style scoped>
 #app {
   overflow-x: hidden;
+  background-color: #83d1e5;
+}
+
+h1 {
+  font-family: sans-serif;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.template {
+  font-family: sans-serif;
+  background-color: #83d1e5;
+  height: 100vh;
+  width: 100%;
+  color: #ffffff;
 }
 
 h2 {
-  font-size: 15px;
+  font-size: 25px;
+}
+
+img {
+  border-radius: 10px;
+  heigth: 50px;
+  width: 50px;
 }
 
 p {
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .donut-item {
@@ -160,8 +182,21 @@ p {
   border: 1px solid #ccc;
   display: flex;
   flex-direction: row;
+  align-items: center;
   transition: transform 1.5s ease-in;
   gap: 20px;
+
+  border: 2px solid;
+  border-radius: 10px;
+  font-family: sans-serif;
+}
+
+.order-false {
+  border-color: #ff4c8e;
+}
+
+.order-true {
+  border-color: #61d1d6;
 }
 
 .removed {
