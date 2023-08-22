@@ -3,7 +3,7 @@ document.querySelector(".submit").addEventListener("click", (e) => {
   validateForm();
 });
 
-function validateForm() {
+  const validateForm = () => { 
   const donutName = document.querySelector("#donutname");
   const companyName = document.querySelector("#companyname");
   const streetname = document.querySelector("#streetname");

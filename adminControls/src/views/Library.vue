@@ -150,16 +150,19 @@ export default {
 
 h1 {
   font-family: sans-serif;
-  margin-left: 10px;
-  margin-top: 10px;
+  padding-left: 20px;
+  padding-top: 20px;
 }
 
 .template {
   font-family: sans-serif;
-  background-color: #83d1e5;
+  background-color: #f8f594;
   height: 100vh;
   width: 100%;
-  color: #ffffff;
+  margin-left: -8px;
+  padding-right: 20px;
+  margin-top: -20px;
+  overflow: hidden;
 }
 
 h2 {
